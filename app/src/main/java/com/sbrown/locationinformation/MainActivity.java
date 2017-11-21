@@ -3,12 +3,14 @@ package com.sbrown.locationinformation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     LocationManager locationManager;
     LocationListener locationListener;
+    double lat=0.0, lon=0.0;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -47,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
 
-                //LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                lat=location.getLatitude();
+                lon=location.getLongitude();
 
-                txtLatitude.setText("Latitude: " + location.getLatitude()+"");
-                txtLongitude.setText("Longitude: " + location.getLongitude()+"");
+                txtLatitude.setText("Latitude: " +lat);
+                txtLongitude.setText("Longitude: " + lon);
                 txtAccuracy.setText("Accuracy: " + location.getAccuracy()+"");
                 txtAltitude.setText("Altitude: " + Math.round(location.getAltitude()/0.3048) +"'");
 
@@ -108,6 +113,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }//end onCreate
+
+
+    public void onClick(View view){
+
+        Uri uri = Uri.parse("https://www.google.com/maps/search/"+lat+",+-"+lon);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+
+    }
 
 
 

@@ -88,4 +88,12 @@
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/overlay"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignStart="@+id/txtLatitude"
+        android:layout_alignTop="@+id/txtLatitude"
+        android:onClick="onClick" />
+
 </RelativeLayout>
