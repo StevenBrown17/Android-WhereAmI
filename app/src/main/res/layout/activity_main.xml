@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/background"
-        android:scaleType = "centerCrop"/>
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/background" />
 
     <TextView
         android:id="@+id/textView"
@@ -95,5 +95,14 @@
         android:layout_alignStart="@+id/txtLatitude"
         android:layout_alignTop="@+id/txtLatitude"
         android:onClick="onClick" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/overlay"
+        android:text="Click on info to see map"
+        android:textSize="18sp" />
 
 </RelativeLayout>
